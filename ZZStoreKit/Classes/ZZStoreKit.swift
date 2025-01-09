@@ -9,7 +9,7 @@ import StoreKit
 
 
 @available(iOS 12.2, *)
-class ZZStoreKit {
+public class ZZStoreKit {
     enum ZZStoreError : Error {
         
         /// Failure due to an unknown, unrecoverable error.
@@ -199,6 +199,8 @@ class ZZStoreKit {
         }
     }
 }
+
+@available(iOS 12.2, *)
 extension ZZStoreKit{
     fileprivate static func enterError(_ err: Error) -> ZZStoreError{
         if #available(iOS 15.0, *) {

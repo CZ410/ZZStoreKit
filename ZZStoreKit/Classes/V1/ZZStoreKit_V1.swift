@@ -33,6 +33,8 @@ class ZZStoreKit_V1: NSObject{
 }
 
 // MARK: - Method
+
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZStoreKit_V1{
     
     /// 处理未完成订单
@@ -94,6 +96,8 @@ extension ZZStoreKit_V1{
 }
 
 // MARK: -  SKPaymentTransactionObserver
+
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZStoreKit_V1: SKPaymentTransactionObserver{
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction")

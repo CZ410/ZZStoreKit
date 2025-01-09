@@ -10,7 +10,7 @@ import StoreKit
 
 
 @available(iOS 12.2, *)
-struct ZZPaymentTransaction {
+public struct ZZPaymentTransaction {
     
     var _transaction_v1: Any?
     @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
@@ -48,7 +48,7 @@ struct ZZPaymentTransaction {
                     case .success(let data):
                         let dataStr = data.base64EncodedString(options: [.endLineWithLineFeed])
                         complate?(dataStr)
-                    case .failure(let err):
+                    case .failure(_):
                         complate?(nil)
                 }
             }

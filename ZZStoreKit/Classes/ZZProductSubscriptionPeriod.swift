@@ -6,7 +6,7 @@
 //
 
 @available(iOS 12.2, *)
-struct ZZProductSubscriptionPeriod{
+public struct ZZProductSubscriptionPeriod{
     
     var numberOfUnits: Int
     
