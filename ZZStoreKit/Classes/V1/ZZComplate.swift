@@ -7,7 +7,7 @@
 
 import StoreKit
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZComplateControl{
     var complates = [ZZComplate]()
     
@@ -27,7 +27,7 @@ class ZZComplateControl{
     
 }
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZComplate{
     var callback: ((_ transactions: [SKPaymentTransaction]) -> Void)?
     

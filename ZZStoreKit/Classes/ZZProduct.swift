@@ -7,7 +7,7 @@
 
 import StoreKit
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 extension SKProduct.PeriodUnit{
     var toZZUnit: ZZProduct.Unit{
         switch self {
@@ -43,7 +43,7 @@ extension Product.SubscriptionPeriod.Unit{
     }
 }
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 struct ZZProduct{
     enum Unit : Equatable, Hashable {
         case day
@@ -65,7 +65,7 @@ struct ZZProduct{
     }
     
     var _product_v1: Any?
-    @available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use init(transaction: Transaction)")
+    @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
     var product_v1: SKProduct?{
         return _product_v1 as? SKProduct
     }

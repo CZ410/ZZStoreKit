@@ -9,11 +9,11 @@ import Foundation
 import StoreKit
 
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 struct ZZPaymentTransaction {
     
     var _transaction_v1: Any?
-    @available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use init(transaction: Transaction)")
+    @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
     var transaction_v1: SKPaymentTransaction?{
         return _transaction_v1 as? SKPaymentTransaction
     }
@@ -31,7 +31,7 @@ struct ZZPaymentTransaction {
         self._transaction_v2 = transaction
     }
 
-    @available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use init(transaction: Transaction)")
+    @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
     init(transaction: SKPaymentTransaction) {
         self._transaction_v1 = transaction
     }

@@ -5,7 +5,7 @@
 //  Created by 陈钟 on 2025/1/8.
 //
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 struct ZZProductSubscriptionPeriod{
     
     var numberOfUnits: Int

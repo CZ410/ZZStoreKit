@@ -7,7 +7,7 @@
 
 import StoreKit
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZReceiptRefreshRequestControl: NSObject{
     var requests: [ZZReceiptRefreshRequest] = []
     
@@ -18,7 +18,7 @@ class ZZReceiptRefreshRequestControl: NSObject{
     }
 }
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZReceiptRefreshRequest: NSObject{
     
     var callback:((Result<Data, SKError>) -> Void)?
@@ -45,7 +45,7 @@ class ZZReceiptRefreshRequest: NSObject{
 
 }
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZReceiptRefreshRequestControl: SKRequestDelegate{
     func request(_ request: SKRequest, didFailWithError error: any Error) {
         let requests = self.requests.filter({ $0.request == request})

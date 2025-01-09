@@ -8,7 +8,7 @@
 import Foundation
 import StoreKit
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 struct ZZProductDiscount{
     
     enum PaymentMode : UInt, @unchecked Sendable {
@@ -53,7 +53,7 @@ struct ZZProductDiscount{
     
 }
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 extension SKProductDiscount.PaymentMode{
     var toZZPaymentModel: ZZProductDiscount.PaymentMode{
         switch self {
@@ -85,7 +85,7 @@ extension Product.SubscriptionOffer.PaymentMode{
     }
 }
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 extension SKProductDiscount.`Type`{
     var toZZOfferType: ZZProductDiscount.OfferType{
         switch self {

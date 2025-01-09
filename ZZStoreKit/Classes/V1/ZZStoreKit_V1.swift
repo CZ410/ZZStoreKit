@@ -6,7 +6,7 @@
 //
 import StoreKit
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZStoreKit_V1: NSObject{
     
     static let share = ZZStoreKit_V1()

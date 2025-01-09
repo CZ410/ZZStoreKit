@@ -7,7 +7,7 @@
 
 import StoreKit
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZRestoreControl{
     var restores = [ZZRestore]()
     
@@ -55,7 +55,7 @@ class ZZRestoreControl{
     }
 }
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZRestore{
     var applicationUsername: String?
     var callback: ((Result<[SKPaymentTransaction], SKError>) -> Void)?

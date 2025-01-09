@@ -7,7 +7,7 @@
 
 import StoreKit
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZPaymentControl{
     
     var payments = [ZZPayment]()
@@ -49,7 +49,7 @@ class ZZPaymentControl{
     
 }
 
-@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
+@available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZPayment{
     var product: SKProduct
     var applicationUsername: String?

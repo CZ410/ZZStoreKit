@@ -8,7 +8,7 @@
 import StoreKit
 
 
-@available(iOS 12.0, *)
+@available(iOS 12.2, *)
 class ZZStoreKit {
     enum ZZStoreError : Error {
         
