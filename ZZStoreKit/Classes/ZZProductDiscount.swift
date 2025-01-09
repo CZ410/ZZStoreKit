@@ -53,6 +53,7 @@ struct ZZProductDiscount{
     
 }
 
+@available(iOS 12.0, *)
 extension SKProductDiscount.PaymentMode{
     var toZZPaymentModel: ZZProductDiscount.PaymentMode{
         switch self {
@@ -84,6 +85,7 @@ extension Product.SubscriptionOffer.PaymentMode{
     }
 }
 
+@available(iOS 12.0, *)
 extension SKProductDiscount.`Type`{
     var toZZOfferType: ZZProductDiscount.OfferType{
         switch self {

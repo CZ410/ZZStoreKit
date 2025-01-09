@@ -18,6 +18,7 @@ class ZZProductsRequestControl: NSObject{
     }
 }
 
+@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 class ZZProductsRequest:NSObject{
     
     var ids: [String] = []
@@ -38,6 +39,7 @@ class ZZProductsRequest:NSObject{
     }
 }
 
+@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZProductsRequestControl: SKProductsRequestDelegate{
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let requests = self.requests.filter({ $0.request == request})

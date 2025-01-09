@@ -45,6 +45,7 @@ class ZZReceiptRefreshRequest: NSObject{
 
 }
 
+@available(iOS, introduced: 12.0, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZReceiptRefreshRequestControl: SKRequestDelegate{
     func request(_ request: SKRequest, didFailWithError error: any Error) {
         let requests = self.requests.filter({ $0.request == request})

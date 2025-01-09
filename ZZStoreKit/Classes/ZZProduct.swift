@@ -7,6 +7,7 @@
 
 import StoreKit
 
+@available(iOS 12.0, *)
 extension SKProduct.PeriodUnit{
     var toZZUnit: ZZProduct.Unit{
         switch self {
