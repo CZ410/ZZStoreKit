@@ -65,15 +65,11 @@
 		};
 		06E2A4272D2FB1DC0095B67B /* ZZStoreKitExTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = ZZStoreKitExTests;
 			sourceTree = "<group>";
 		};
 		06E2A4312D2FB1DC0095B67B /* ZZStoreKitExUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = ZZStoreKitExUITests;
 			sourceTree = "<group>";
 		};
@@ -139,7 +135,6 @@
 				5A966467696FC2E30630C39B /* Pods-ZZStoreKitExTests.debug.xcconfig */,
 				064D3DEAB935A32A52BA81B7 /* Pods-ZZStoreKitExTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -441,6 +436,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8CF4A83U8F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZZStoreKitEx/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -470,6 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8CF4A83U8F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZZStoreKitEx/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

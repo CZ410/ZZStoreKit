@@ -12,33 +12,33 @@ import StoreKit
 @available(iOS 12.2, *)
 public struct ZZPaymentTransaction {
     
-    var _transaction_v1: Any?
+    public var _transaction_v1: Any?
     @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
-    var transaction_v1: SKPaymentTransaction?{
+    public var transaction_v1: SKPaymentTransaction?{
         return _transaction_v1 as? SKPaymentTransaction
     }
     
-    var _transaction_v2: Any?
+    public var _transaction_v2: Any?
     
     @available(iOS 15.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
-    var transaction_v2: Transaction?{
+    public var transaction_v2: Transaction?{
         return _transaction_v2 as? Transaction
     }
     
     
     @available(iOS 15.0, *)
-    init(transaction: Transaction) {
+    public init(transaction: Transaction) {
         self._transaction_v2 = transaction
     }
 
     @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
-    init(transaction: SKPaymentTransaction) {
+    public init(transaction: SKPaymentTransaction) {
         self._transaction_v1 = transaction
     }
     
     /// 票据信息 已经转成 Base64 字符串
     /// - Parameter complate: 回调
-    func receiptDataString(complate: ((_ receiptDataString: String?) -> Void)? = nil){
+    public func receiptDataString(complate: ((_ receiptDataString: String?) -> Void)? = nil){
         if #available(iOS 15.0, *) {
             let dataStr = transaction_v2?.jsonRepresentation.base64EncodedString(options: [.endLineWithLineFeed])
             complate?(dataStr)
@@ -56,7 +56,7 @@ public struct ZZPaymentTransaction {
     }
     
     /// 唯一订单号 提交服务器验证即可
-    var transactionIdentifier: String{
+    public var transactionIdentifier: String{
         if #available(iOS 15.0, *) {
             return "\(transaction_v2?.id ?? 0)"
         } else {
@@ -65,7 +65,7 @@ public struct ZZPaymentTransaction {
     }
     
     /// 结束订单
-    func finished(){
+    public func finished(){
         if #available(iOS 15.0, *) {
             Task {
                 await self.transaction_v2?.finish()

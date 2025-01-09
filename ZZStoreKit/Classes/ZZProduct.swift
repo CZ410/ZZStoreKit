@@ -8,7 +8,7 @@
 import StoreKit
 
 @available(iOS 12.2, *)
-extension SKProduct.PeriodUnit{
+public extension SKProduct.PeriodUnit{
     var toZZUnit: ZZProduct.Unit{
         switch self {
             case .day:
@@ -26,7 +26,7 @@ extension SKProduct.PeriodUnit{
 }
 
 @available(iOS 15.0, *)
-extension Product.SubscriptionPeriod.Unit{
+public extension Product.SubscriptionPeriod.Unit{
     var toZZUnit: ZZProduct.Unit{
         switch self {
             case .day:
@@ -45,7 +45,7 @@ extension Product.SubscriptionPeriod.Unit{
 
 @available(iOS 12.2, *)
 public struct ZZProduct{
-    enum Unit : Equatable, Hashable {
+    public enum Unit : Equatable, Hashable {
         case day
         
         case week
@@ -64,21 +64,21 @@ public struct ZZProduct{
         return formatter
     }
     
-    var _product_v1: Any?
+    public var _product_v1: Any?
     @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use init(transaction: Transaction)")
-    var product_v1: SKProduct?{
+    public var product_v1: SKProduct?{
         return _product_v1 as? SKProduct
     }
     
-    var _product_v2: Any?
+    public var _product_v2: Any?
     
     @available(iOS 15.0, *)
-    var product_v2: Product?{
+    public var product_v2: Product?{
         return _product_v2 as? Product
     }
     
     
-    init(product: SKProduct) {
+    public init(product: SKProduct) {
         self._product_v1 = product
         self.localizedDescription = product.localizedDescription
         self.localizedTitle = product.localizedTitle
@@ -132,7 +132,7 @@ public struct ZZProduct{
     }
     
     @available(iOS 15.0, *)
-    init(product: Product) {
+    public init(product: Product) {
         self._product_v2 = product
         self.localizedDescription = product.description
         self.localizedTitle = product.displayName
@@ -185,35 +185,35 @@ public struct ZZProduct{
         }) ?? []
     }
     
-    var localizedDescription: String
+    public var localizedDescription: String
     
-    var localizedTitle: String
+    public var localizedTitle: String
     
-    var price: String
+    public var price: String
     
-    var priceLocale: Locale
+    public var priceLocale: Locale
     
-    var productIdentifier: String
+    public var productIdentifier: String
     
     /// ios15 以上弃用  固定值 false
-    var isDownloadable: Bool
+    public var isDownloadable: Bool
     
-    var isFamilyShareable: Bool
-    
-    /// ios15 以上弃用  固定值 空
-    var downloadContentLengths: [NSNumber]
+    public var isFamilyShareable: Bool
     
     /// ios15 以上弃用  固定值 空
-    var contentVersion: String
+    public var downloadContentLengths: [NSNumber]
     
     /// ios15 以上弃用  固定值 空
-    var downloadContentVersion: String
+    public var contentVersion: String
     
-    var subscriptionPeriod: ZZProductSubscriptionPeriod?
+    /// ios15 以上弃用  固定值 空
+    public var downloadContentVersion: String
     
-    var introductoryPrice: ZZProductDiscount?
+    public var subscriptionPeriod: ZZProductSubscriptionPeriod?
     
-    var subscriptionGroupIdentifier: String?
+    public var introductoryPrice: ZZProductDiscount?
     
-    var discounts: [ZZProductDiscount]
+    public var subscriptionGroupIdentifier: String?
+    
+    public var discounts: [ZZProductDiscount]
 }

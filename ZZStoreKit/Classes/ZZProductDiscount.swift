@@ -11,7 +11,7 @@ import StoreKit
 @available(iOS 12.2, *)
 public struct ZZProductDiscount{
     
-    enum PaymentMode : UInt, @unchecked Sendable {
+    public  enum PaymentMode : UInt, @unchecked Sendable {
         
         case payAsYouGo = 0
         
@@ -22,7 +22,7 @@ public struct ZZProductDiscount{
         case unowned = 999
     }
     
-    enum OfferType : UInt, @unchecked Sendable {
+    public enum OfferType : UInt, @unchecked Sendable {
         
         case introductory = 0
         
@@ -35,26 +35,26 @@ public struct ZZProductDiscount{
         case unowned = 999
     }
     
-    var price: Decimal
+    public var price: Decimal
     
-    var localizedPrice: String
+    public var localizedPrice: String
     
-    var priceLocale: Locale
+    public var priceLocale: Locale
     
-    var identifier: String?
+    public var identifier: String?
     
-    var subscriptionPeriod: ZZProductSubscriptionPeriod
+    public var subscriptionPeriod: ZZProductSubscriptionPeriod
     
-    var numberOfPeriods: Int
+    public var numberOfPeriods: Int
     
-    var paymentMode: PaymentMode
+    public var paymentMode: PaymentMode
     
-    var type: OfferType
+    public var type: OfferType
     
 }
 
 @available(iOS 12.2, *)
-extension SKProductDiscount.PaymentMode{
+public extension SKProductDiscount.PaymentMode{
     var toZZPaymentModel: ZZProductDiscount.PaymentMode{
         switch self {
             case .payAsYouGo:
@@ -70,7 +70,7 @@ extension SKProductDiscount.PaymentMode{
 }
 
 @available(iOS 15.0, *)
-extension Product.SubscriptionOffer.PaymentMode{
+public extension Product.SubscriptionOffer.PaymentMode{
     var toZZPaymentModel: ZZProductDiscount.PaymentMode{
         switch self {
             case .payAsYouGo:
@@ -86,7 +86,7 @@ extension Product.SubscriptionOffer.PaymentMode{
 }
 
 @available(iOS 12.2, *)
-extension SKProductDiscount.`Type`{
+public extension SKProductDiscount.`Type`{
     var toZZOfferType: ZZProductDiscount.OfferType{
         switch self {
             case .introductory:
@@ -100,7 +100,7 @@ extension SKProductDiscount.`Type`{
 }
 
 @available(iOS 15.0, *)
-extension Product.SubscriptionOffer.OfferType{
+public extension Product.SubscriptionOffer.OfferType{
     var toZZOfferType: ZZProductDiscount.OfferType{
         if #available(iOS 18.0, *) {
             if case .winBack = self{
