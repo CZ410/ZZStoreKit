@@ -8,17 +8,17 @@
 import StoreKit
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZRestoreControl{
-    var restores = [ZZRestore]()
+public class ZZRestoreControl{
+    public var restores = [ZZRestore]()
     
     private var willCallBackRestores = [SKPaymentTransaction]()
     
-    func add(_ restore: ZZRestore, queue: SKPaymentQueue){
+    public func add(_ restore: ZZRestore, queue: SKPaymentQueue){
         restores.append(restore)
         queue.restoreCompletedTransactions(withApplicationUsername: restore.applicationUsername)
     }
     
-    func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
+    public func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
         guard !restores.isEmpty else {
             return transactions
         }
@@ -29,7 +29,7 @@ class ZZRestoreControl{
     }
     
     
-    func restoreCompletedTransactionsFailed(withError error: Error) {
+    public func restoreCompletedTransactionsFailed(withError error: Error) {
         guard !restores.isEmpty else {
             return
         }
@@ -42,7 +42,7 @@ class ZZRestoreControl{
         willCallBackRestores.removeAll()
     }
     
-    func restoreCompletedTransactionsFinished() {
+    public func restoreCompletedTransactionsFinished() {
         guard !restores.isEmpty else {
             return
         }
@@ -56,11 +56,11 @@ class ZZRestoreControl{
 }
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZRestore{
-    var applicationUsername: String?
-    var callback: ((Result<[SKPaymentTransaction], SKError>) -> Void)?
+public class ZZRestore{
+    public var applicationUsername: String?
+    public var callback: ((Result<[SKPaymentTransaction], SKError>) -> Void)?
     
-    init(applicationUsername: String? = nil, callback: ((Result<[SKPaymentTransaction], SKError>) -> Void)?) {
+    public init(applicationUsername: String? = nil, callback: ((Result<[SKPaymentTransaction], SKError>) -> Void)?) {
         self.applicationUsername = applicationUsername
         self.callback = callback
     }

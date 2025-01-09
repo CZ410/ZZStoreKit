@@ -10,7 +10,7 @@ import StoreKit
 
 @available(iOS 12.2, *)
 public class ZZStoreKit {
-    enum ZZStoreError : Error {
+    public enum ZZStoreError : Error {
         
         /// Failure due to an unknown, unrecoverable error.
         ///
@@ -35,7 +35,7 @@ public class ZZStoreKit {
     
     /// 处理未完成订单
     /// - Parameter block: 回调
-    static func complateTransaction(complate block: ((_ transactions: [ZZPaymentTransaction]) -> Void)? = nil){
+    public static func complateTransaction(complate block: ((_ transactions: [ZZPaymentTransaction]) -> Void)? = nil){
         if #available(iOS 15, *) {
             ZZStoreKit_V2.share.complateTransaction { verificationResults in
                 var transactions: [Transaction] = []
@@ -60,7 +60,7 @@ public class ZZStoreKit {
     /// - Parameters:
     ///   - ids: 商品ProductIdentifier
     ///   - block:  回调
-    static func getProducts(
+    public static func getProducts(
         _ ids: [String],
         complate block:((Result<[ZZProduct], ZZStoreError>) -> Void)? = nil
     ){
@@ -94,7 +94,7 @@ public class ZZStoreKit {
     ///   - applicationUsername: applicationUsername description
     ///   - isSandbox: 是否沙盒
     ///   - block: 回调 并携带票据信息
-    static func buyProduct(
+    public static func buyProduct(
         _ product: ZZProduct,
         quantity: Int = 1,
         appAccountToken: UUID? = nil,
@@ -164,7 +164,7 @@ public class ZZStoreKit {
     
     /// 结束订单
     /// - Parameter transaction: 订单信息 buyProduct 回调中获取
-    static func finishedTransaction(_ transaction: ZZPaymentTransaction){
+    public static func finishedTransaction(_ transaction: ZZPaymentTransaction){
         transaction.finished()
     }
     
@@ -172,7 +172,7 @@ public class ZZStoreKit {
     /// - Parameters:
     ///   - applicationUsername: applicationUsername description
     ///   - block: 回调
-    static func restore(
+    public static func restore(
         applicationUsername: String? = nil,
         complate block: ((Result<Void, ZZStoreError>) -> Void)? = nil
     ){
@@ -201,7 +201,7 @@ public class ZZStoreKit {
 }
 
 @available(iOS 12.2, *)
-extension ZZStoreKit{
+public extension ZZStoreKit{
     fileprivate static func enterError(_ err: Error) -> ZZStoreError{
         if #available(iOS 15.0, *) {
             if let error = err as? StoreKitError{

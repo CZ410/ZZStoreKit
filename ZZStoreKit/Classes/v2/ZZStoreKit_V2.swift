@@ -7,17 +7,17 @@
 import StoreKit
 
 @available(iOS 15.0, *)
-class ZZStoreKit_V2: NSObject{
+public class ZZStoreKit_V2: NSObject{
     
-    static let share = ZZStoreKit_V2()
+    public static let share = ZZStoreKit_V2()
     
-    enum PurchaseStatus{
+    public enum PurchaseStatus{
         case success, canceled, pending, unowned
     }
     
-    var complateTranscationCallbacks: ((_ transactions: [VerificationResult<Transaction>]) -> Void)?
+    public var complateTranscationCallbacks: ((_ transactions: [VerificationResult<Transaction>]) -> Void)?
     private var updateListenerTask: Task<Void, Error>? = nil // 支付事件监听
-    override init() {
+    public override init() {
         super.init()
         updateListenerTask = listenForTransactions()
     }
@@ -30,7 +30,7 @@ class ZZStoreKit_V2: NSObject{
     /// - Parameters:
     ///   - ids: 商品ProductIdentifier
     ///   - block:  回调
-    func getProducts(_ ids: [String]) async throws -> [Product]{
+    public func getProducts(_ ids: [String]) async throws -> [Product]{
         let products = try await Product.products(for: Set(ids))
         return products
     }
@@ -42,7 +42,7 @@ class ZZStoreKit_V2: NSObject{
     ///   - applicationUsername: applicationUsername description
     ///   - isSandbox: 是否沙盒
     ///   - block: 回调
-    func buyProduct(
+    public func buyProduct(
         _ product: Product,
         quantity: Int = 1,
         applicationUsername: String? = nil,
@@ -80,7 +80,7 @@ class ZZStoreKit_V2: NSObject{
     
     /// 结束订单
     /// - Parameter transaction: 订单信息 buyProduct 回调中获取
-    func finishedTransaction(_ transaction: Transaction) async {
+    public func finishedTransaction(_ transaction: Transaction) async {
         await transaction.finish()
     }
     
@@ -88,13 +88,13 @@ class ZZStoreKit_V2: NSObject{
     /// - Parameters:
     ///   - applicationUsername: applicationUsername description
     ///   - block: 回调
-    func restore() async throws{
+    public func restore() async throws{
        try await AppStore.sync()
     }
     
     /// 处理未完成订单
     /// - Parameter block: 回调
-    func complateTransaction(complate block: ((_ verificationResults: [VerificationResult<Transaction>]) -> Void)? = nil){
+    public func complateTransaction(complate block: ((_ verificationResults: [VerificationResult<Transaction>]) -> Void)? = nil){
         complateTranscationCallbacks = block
     }
     

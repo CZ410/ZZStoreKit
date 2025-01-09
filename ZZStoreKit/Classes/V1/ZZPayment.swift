@@ -8,11 +8,11 @@
 import StoreKit
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZPaymentControl{
+public class ZZPaymentControl{
     
-    var payments = [ZZPayment]()
+    public var payments = [ZZPayment]()
     
-    func add(_ payment: ZZPayment, queue: SKPaymentQueue){
+    public func add(_ payment: ZZPayment, queue: SKPaymentQueue){
         payments.append(payment)
         let paymentV = SKMutablePayment(product: payment.product)
         paymentV.applicationUsername = payment.applicationUsername
@@ -21,7 +21,7 @@ class ZZPaymentControl{
         queue.add(paymentV)
     }
     
-    func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
+    public func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
         var unupdateTransactions = transactions
         print("Payments \(self.payments)")
         transactions.forEach { transaction in
@@ -50,14 +50,14 @@ class ZZPaymentControl{
 }
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZPayment{
-    var product: SKProduct
-    var applicationUsername: String?
-    var quantity: Int
-    var isSandbox: Bool
-    var callback: ((Result<SKPaymentTransaction, SKError>) -> Void)?
+public class ZZPayment{
+    public var product: SKProduct
+    public var applicationUsername: String?
+    public var quantity: Int
+    public var isSandbox: Bool
+    public var callback: ((Result<SKPaymentTransaction, SKError>) -> Void)?
     
-    init(product: SKProduct, applicationUsername: String? = nil, quantity: Int = 1, isSandbox: Bool = false, callback: ((Result<SKPaymentTransaction, SKError>) -> Void)?) {
+    public init(product: SKProduct, applicationUsername: String? = nil, quantity: Int = 1, isSandbox: Bool = false, callback: ((Result<SKPaymentTransaction, SKError>) -> Void)?) {
         self.product = product
         self.applicationUsername = applicationUsername
         self.quantity = quantity

@@ -8,14 +8,14 @@
 import StoreKit
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZComplateControl{
-    var complates = [ZZComplate]()
+public class ZZComplateControl{
+    public var complates = [ZZComplate]()
     
-    func add(_ complate: ZZComplate, queue: SKPaymentQueue){
+    public func add(_ complate: ZZComplate, queue: SKPaymentQueue){
         complates.append(complate)
     }
     
-    func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
+    public func updatedTransactions(_ transactions: [SKPaymentTransaction]) -> [SKPaymentTransaction]{
         guard !complates.isEmpty else {
             return transactions
         }
@@ -28,10 +28,10 @@ class ZZComplateControl{
 }
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZComplate{
-    var callback: ((_ transactions: [SKPaymentTransaction]) -> Void)?
+public class ZZComplate{
+    public var callback: ((_ transactions: [SKPaymentTransaction]) -> Void)?
     
-    init(callback: ((_ transactions: [SKPaymentTransaction]) -> Void)?) {
+    public init(callback: ((_ transactions: [SKPaymentTransaction]) -> Void)?) {
         self.callback = callback
     }
 }

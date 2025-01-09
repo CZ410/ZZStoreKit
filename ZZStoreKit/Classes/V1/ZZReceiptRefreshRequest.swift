@@ -8,10 +8,10 @@
 import StoreKit
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZReceiptRefreshRequestControl: NSObject{
-    var requests: [ZZReceiptRefreshRequest] = []
+public class ZZReceiptRefreshRequestControl: NSObject{
+    public var requests: [ZZReceiptRefreshRequest] = []
     
-    func add(_ request: ZZReceiptRefreshRequest){
+    public func add(_ request: ZZReceiptRefreshRequest){
         requests.append(request)
         request.request.delegate = self
         request.start()
@@ -19,19 +19,19 @@ class ZZReceiptRefreshRequestControl: NSObject{
 }
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZReceiptRefreshRequest: NSObject{
+public class ZZReceiptRefreshRequest: NSObject{
     
-    var callback:((Result<Data, SKError>) -> Void)?
+    public var callback:((Result<Data, SKError>) -> Void)?
     
-    var request: SKReceiptRefreshRequest!
+    public var request: SKReceiptRefreshRequest!
     
-    init(block: ((Result<Data, SKError>) -> Void)?) {
+    public init(block: ((Result<Data, SKError>) -> Void)?) {
         super.init()
         request = SKReceiptRefreshRequest(receiptProperties: [:])
         self.callback = block
     }
     
-    func start(){
+    public func start(){
         request.start()
     }
     
@@ -47,14 +47,14 @@ class ZZReceiptRefreshRequest: NSObject{
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZReceiptRefreshRequestControl: SKRequestDelegate{
-    func request(_ request: SKRequest, didFailWithError error: any Error) {
+    public func request(_ request: SKRequest, didFailWithError error: any Error) {
         let requests = self.requests.filter({ $0.request == request})
         let err = (error as? SKError) ?? SKError(_nsError: NSError(domain: "Unknow Receipt Refresh Request Error", code: -1))
         requests.forEach({ $0.callback?(.failure(err)) })
         self.requests.removeAll(where: { requests.contains($0) })
     }
     
-    func requestDidFinish(_ request: SKRequest) {
+    public func requestDidFinish(_ request: SKRequest) {
         let requests = self.requests.filter({ $0.request == request})
         requests.forEach { req in
             if let data = req.appStoreReceiptData {

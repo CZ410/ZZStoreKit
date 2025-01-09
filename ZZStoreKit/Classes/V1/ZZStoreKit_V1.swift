@@ -7,7 +7,7 @@
 import StoreKit
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-class ZZStoreKit_V1: NSObject{
+public class ZZStoreKit_V1: NSObject{
     
     static let share = ZZStoreKit_V1()
     
@@ -17,11 +17,11 @@ class ZZStoreKit_V1: NSObject{
     private let restoreControl = ZZRestoreControl()
     private let complateControl = ZZComplateControl()
     
-    var paymentQueue: SKPaymentQueue{
+    public var paymentQueue: SKPaymentQueue{
         return SKPaymentQueue.default()
     }
     
-    override init() {
+    public override init() {
         super.init()
         paymentQueue.add(self)
     }
@@ -35,7 +35,7 @@ class ZZStoreKit_V1: NSObject{
 // MARK: - Method
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
-extension ZZStoreKit_V1{
+public extension ZZStoreKit_V1{
     
     /// 处理未完成订单
     /// - Parameter block: 回调
@@ -99,7 +99,7 @@ extension ZZStoreKit_V1{
 
 @available(iOS, introduced: 12.2, deprecated: 15.0, message: "Use ZZStoreKit_V2")
 extension ZZStoreKit_V1: SKPaymentTransactionObserver{
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction")
         let transactions = transactions.filter({ $0.transactionState != .purchasing })
         var unupdateTransactions = [SKPaymentTransaction]()
@@ -113,19 +113,19 @@ extension ZZStoreKit_V1: SKPaymentTransactionObserver{
         }
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+    public func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
     
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: any Error) {
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: any Error) {
         self.restoreControl.restoreCompletedTransactionsFailed(withError: error)
     }
     
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         self.restoreControl.restoreCompletedTransactionsFinished()
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
         
     }
     

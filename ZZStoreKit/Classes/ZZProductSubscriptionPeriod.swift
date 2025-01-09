@@ -8,7 +8,7 @@
 @available(iOS 12.2, *)
 public struct ZZProductSubscriptionPeriod{
     
-    var numberOfUnits: Int
+    public var numberOfUnits: Int
     
-    var unit: ZZProduct.Unit
+    public var unit: ZZProduct.Unit
 }
