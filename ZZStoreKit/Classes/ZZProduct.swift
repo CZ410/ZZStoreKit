@@ -42,6 +42,7 @@ extension Product.SubscriptionPeriod.Unit{
     }
 }
 
+@available(iOS 12.0, *)
 struct ZZProduct{
     enum Unit : Equatable, Hashable {
         case day

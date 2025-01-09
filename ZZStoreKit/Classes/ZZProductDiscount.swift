@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 
+@available(iOS 12.0, *)
 struct ZZProductDiscount{
     
     enum PaymentMode : UInt, @unchecked Sendable {

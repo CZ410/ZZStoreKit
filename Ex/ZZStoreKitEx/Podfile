@@ -8,7 +8,12 @@ target 'ZZStoreKitEx' do
   # Pods for ZZStoreKitEx
 
 
-  pod 'ZZStoreKit', :path => '../../'
+  #pod 'ZZStoreKit', :path => '../../'
+
+
+  pod 'ZZStoreKit', :git => 'https://github.com/CZ410/ZZStoreKit.git'
+
+
 
   target 'ZZStoreKitExTests' do
     inherit! :search_paths

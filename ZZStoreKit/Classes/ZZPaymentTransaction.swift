@@ -9,6 +9,7 @@ import Foundation
 import StoreKit
 
 
+@available(iOS 12.0, *)
 struct ZZPaymentTransaction {
     
     var _transaction_v1: Any?
