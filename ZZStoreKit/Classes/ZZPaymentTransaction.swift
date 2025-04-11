@@ -55,6 +55,14 @@ public struct ZZPaymentTransaction {
         }
     }
     
+    public var productIdentifier: String{
+        if #available(iOS 15.0, *) {
+            return transaction_v2?.productID ?? ""
+        } else {
+            return transaction_v1?.payment.productIdentifier ?? ""
+        }
+    }
+    
     /// 唯一订单号 提交服务器验证即可
     public var transactionIdentifier: String{
         if #available(iOS 15.0, *) {

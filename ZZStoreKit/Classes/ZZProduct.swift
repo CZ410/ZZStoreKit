@@ -82,7 +82,8 @@ public struct ZZProduct{
         self._product_v1 = product
         self.localizedDescription = product.localizedDescription
         self.localizedTitle = product.localizedTitle
-        self.price = product.price.stringValue
+        self.price = product.price as Decimal
+        self.localizedPrice = product.price.stringValue
         self.priceLocale = product.priceLocale
         self.productIdentifier = product.productIdentifier
         self.isDownloadable = product.isDownloadable
@@ -136,7 +137,8 @@ public struct ZZProduct{
         self._product_v2 = product
         self.localizedDescription = product.description
         self.localizedTitle = product.displayName
-        self.price = product.displayPrice
+        self.price = product.price
+        self.localizedPrice = product.displayPrice
         self.priceLocale = Locale.current
         self.productIdentifier = product.id
         
@@ -189,7 +191,9 @@ public struct ZZProduct{
     
     public var localizedTitle: String
     
-    public var price: String
+    public var price: Decimal
+    
+    public var localizedPrice: String
     
     public var priceLocale: Locale
     
