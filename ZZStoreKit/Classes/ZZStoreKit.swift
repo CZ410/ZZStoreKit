@@ -222,6 +222,8 @@ public extension ZZStoreKit{
                         }else {
                             return .systemError(err)
                         }
+                    case .unsupported:
+                        return .systemError(err)
                     @unknown default:
                         return .systemError(err)
                 }

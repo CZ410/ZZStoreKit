@@ -39,20 +39,28 @@ public struct ZZPaymentTransaction {
     /// 票据信息 已经转成 Base64 字符串
     /// - Parameter complate: 回调
     public func receiptDataString(complate: ((_ receiptDataString: String?) -> Void)? = nil){
-        if #available(iOS 15.0, *) {
-            let dataStr = transaction_v2?.jsonRepresentation.base64EncodedString(options: [.endLineWithLineFeed])
-            complate?(dataStr)
-        } else {
+//        guard let url = Bundle.main.appStoreReceiptURL,
+//              let receiptData = try? Data(contentsOf: url, options: .alwaysMapped) else {
+//            complate?(nil)
+//            return
+//        }
+//        let receiptString = receiptData.base64EncodedString(options: [])
+//        
+//        complate?(receiptString)
+//        if #available(iOS 15.0, *) {
+//            let dataStr = transaction_v2?.jsonRepresentation.base64EncodedString(options: [])
+//            complate?(dataStr)
+//        } else {
             ZZStoreKit_V1.share.receiptRefresh { result in
                 switch result {
                     case .success(let data):
-                        let dataStr = data.base64EncodedString(options: [.endLineWithLineFeed])
+                        let dataStr = data.base64EncodedString(options: [])
                         complate?(dataStr)
                     case .failure(_):
                         complate?(nil)
                 }
             }
-        }
+//        }
     }
     
     public var productIdentifier: String{

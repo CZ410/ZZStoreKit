@@ -37,7 +37,7 @@ public class ZZReceiptRefreshRequest: NSObject{
     
     fileprivate  var appStoreReceiptData: Data? {
         guard let url = Bundle.main.appStoreReceiptURL,
-              let data = try? Data(contentsOf: url) else {
+              let data = try? Data(contentsOf: url, options: .alwaysMapped) else {
             return nil
         }
         return data
