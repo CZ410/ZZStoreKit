@@ -60,14 +60,6 @@ public class ZZStoreKit_V2: NSObject{
         
         switch result {
             case .success(let verification):
-//                let transaction = try checkVerified(verification)
-                
-//                //Deliver content to the user.
-//                await updatePurchasedIdentifiers(transaction)
-//                
-//                //Always finish a transaction.
-//                await transaction.finish()
-                
                 return (verification, .success)
             case .userCancelled:
                 return (nil, .canceled)
@@ -76,6 +68,28 @@ public class ZZStoreKit_V2: NSObject{
             default:
                 return (nil, .unowned)
         }
+    }
+    
+    /// 通过商品 ID购买一个商品
+    /// - Parameters:
+    ///   - productId: 商品 ID
+    ///   - quantity: 数量
+    ///   - applicationUsername: applicationUsername description
+    ///   - appAccountToken: 用户 token
+    ///   - isSandbox: 是否沙盒
+    /// - Returns: 回调
+    public func buyProduct(
+        id productId: String,
+        quantity: Int = 1,
+        applicationUsername: String? = nil,
+        appAccountToken: UUID? = nil,
+        isSandbox: Bool = false
+    ) async throws -> (VerificationResult<Transaction>?, PurchaseStatus) {
+        let products = try await getProducts([productId])
+        guard let product = products.first else {
+            return (nil, .unowned)
+        }
+        return try await buyProduct(product, quantity: quantity, applicationUsername: applicationUsername, appAccountToken: appAccountToken, isSandbox: isSandbox)
     }
     
     /// 结束订单

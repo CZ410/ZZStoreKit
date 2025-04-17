@@ -71,6 +71,33 @@ public extension ZZStoreKit_V1{
         paymentControl.add(ZZPayment(product: product, applicationUsername: applicationUsername, quantity: quantity, isSandbox: isSandbox, callback: block), queue: paymentQueue)
     }
     
+    /// 通过商品 ID购买一个商品
+    /// - Parameters:
+    ///   - productId:  商品 ID
+    ///   - quantity: 数量
+    ///   - applicationUsername: applicationUsername description
+    ///   - isSandbox: 是否沙盒
+    ///   - block: 回调
+    func buyProduct(id productId: String,
+                    quantity: Int = 1,
+                    applicationUsername: String? = nil,
+                    isSandbox: Bool = false,
+                    complate block: ((Result<SKPaymentTransaction, SKError>) -> Void)? = nil){
+        getProducts([productId]) { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+                case .success(let req):
+                    if let product = req.products.first {
+                        self.buyProduct(product, quantity: quantity, applicationUsername: applicationUsername, isSandbox: isSandbox, complate: block)
+                    }else {
+                        block?(.failure(SKError(.storeProductNotAvailable)))
+                    }
+                case .failure(let err):
+                    block?(.failure(err))
+            }
+        }
+    }
+    
     /// 获取票据信息
     /// - Parameter block: 回调
     func receiptRefresh(complate block:((Result<Data, SKError>) -> Void)? = nil){

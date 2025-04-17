@@ -162,6 +162,42 @@ public class ZZStoreKit {
         }
     }
     
+    /// 购买一个商品
+    /// - Parameters:
+    ///   - product: 商品 product
+    ///   - quantity: 数量
+    ///   - applicationUsername: applicationUsername description
+    ///   - isSandbox: 是否沙盒
+    ///   - block: 回调 并携带票据信息
+    public static func buyProduct(
+        id productId: String,
+        quantity: Int = 1,
+        appAccountToken: UUID? = nil,
+        applicationUsername: String? = nil,
+        isSandbox: Bool = false,
+        complate block: ((Result<ZZPaymentTransaction, ZZStoreError>) -> Void)? = nil
+    ){
+        self.getProducts([productId]) { result in
+            switch result {
+                case .success(let product):
+                    guard let zzProduct = product.first else {
+                        block?(.failure(.notAvailableInStorefront))
+                        return
+                    }
+                    self.buyProduct(
+                        zzProduct,
+                        quantity: quantity,
+                        appAccountToken: appAccountToken,
+                        applicationUsername: applicationUsername,
+                        isSandbox: isSandbox,
+                        complate: block
+                    )
+                case .failure(let err):
+                    block?(.failure(err))
+            }
+        }
+    }
+    
     /// 结束订单
     /// - Parameter transaction: 订单信息 buyProduct 回调中获取
     public static func finishedTransaction(_ transaction: ZZPaymentTransaction){

@@ -39,14 +39,6 @@ public struct ZZPaymentTransaction {
     /// 票据信息 已经转成 Base64 字符串
     /// - Parameter complate: 回调
     public func receiptDataString(complate: ((_ receiptDataString: String?) -> Void)? = nil){
-//        guard let url = Bundle.main.appStoreReceiptURL,
-//              let receiptData = try? Data(contentsOf: url, options: .alwaysMapped) else {
-//            complate?(nil)
-//            return
-//        }
-//        let receiptString = receiptData.base64EncodedString(options: [])
-//        
-//        complate?(receiptString)
 //        if #available(iOS 15.0, *) {
 //            let dataStr = transaction_v2?.jsonRepresentation.base64EncodedString(options: [])
 //            complate?(dataStr)
