@@ -111,41 +111,15 @@ public class ZZStoreKit_V2: NSObject{
     public func complateTransaction(complate block: ((_ verificationResults: [VerificationResult<Transaction>]) -> Void)? = nil){
         complateTranscationCallbacks = block
     }
-    
+
     /// 未完成支付监听事件
     private func listenForTransactions() -> Task<Void, Error>{
         return Task.detached {
-            //Iterate through any transactions which didn't come from a direct call to `purchase()`.
-            var verifications: [VerificationResult<Transaction>] = []
             for await result in Transaction.updates {
-//            for await result in Transaction.unfinished {
-                verifications.append(result)
-//                do {
-//                    let transaction = try self.checkVerified(result)
-//                    
-//                    //Deliver content to the user.
-////                    await self.updatePurchasedIdentifiers(transaction)
-//                    
-//                    //Always finish a transaction.
-//                    await transaction.finish()
-//                } catch {
-//                    //StoreKit has a receipt it can read but it failed verification. Don't deliver content to the user.
-//                    print("Transaction failed verification")
-//                }
+                await MainActor.run {
+                    self.complateTranscationCallbacks?([result])
+                }
             }
-            self.complateTranscationCallbacks?(verifications)
         }
     }
-    
-//    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
-//        //Check if the transaction passes StoreKit verification.
-//        switch result {
-//            case .unverified:
-//                //StoreKit has parsed the JWS but failed verification. Don't deliver content to the user.
-//                throw StoreKitError.systemError(NSError(domain: "Failed Verification", code: -1))
-//            case .verified(let safe):
-//                //If the transaction is verified, unwrap and return it.
-//                return safe
-//        }
-//    }
 }

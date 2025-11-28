@@ -64,7 +64,8 @@ class ViewController: UIViewController {
     @objc func getProducts(){
         let ids = ["com.parabola.solution.ai.weekly",
                    "com.parabola.solution.ai.yearly",
-                   "com.parabola.solution.ai.balance.100"]
+//                   "com.parabola.solution.ai.balance.100",
+        ]
 //        let ids = ["com.parabola.solution.ai.balance.100"]
         
         print("CCC ---- CCC")
